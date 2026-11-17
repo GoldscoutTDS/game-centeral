@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b14">
+<meta name="description" content="Game Central is your hub for discovering fun browser games. Explore puzzles, arcade games, strategy, multiplayer and more.">
+<title>Game Central | Find your next game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#090b14;--panel:#111522;--panel2:#151b2b;--text:#f4f5ff;--muted:#9aa3ba;--purple:#9b7bff;--cyan:#5ce1e6;--line:rgba(255,255,255,.09);--glow:rgba(132,98,255,.2)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 12% 0%,rgba(105,74,220,.18),transparent 34%),radial-gradient(ellipse at 90% 22%,rgba(42,190,200,.1),transparent 30%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}a{color:inherit;text-decoration:none}button,input{font:inherit}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,6vw,88px);border-bottom:1px solid var(--line);background:rgba(9,11,20,.76);backdrop-filter:blur(18px);position:sticky;top:0;z-index:10}
+.brand{display:flex;align-items:center;gap:11px;font:700 20px 'Space Grotesk',sans-serif;letter-spacing:-.7px}.brand-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#9b7bff,#52dce4);display:grid;place-items:center;color:#0a0d17;font-size:19px;box-shadow:0 5px 25px rgba(133,107,255,.35)}.brand span:last-child{color:#a995ff}
+.nav{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:13px;font-weight:700}.nav a:hover{color:white}.nav-pill{padding:10px 15px;border:1px solid rgba(155,123,255,.35);border-radius:999px;color:#c9baff!important;background:rgba(155,123,255,.09)}
+main{max-width:1200px;margin:auto;padding:0 28px}.hero{padding:82px 0 52px;position:relative}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid rgba(92,225,230,.23);border-radius:999px;background:rgba(92,225,230,.07);color:#8cecf0;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.pulse{width:7px;height:7px;background:#65e7cf;border-radius:50%;box-shadow:0 0 12px #65e7cf}
+h1{font:700 clamp(44px,7vw,76px)/.99 'Space Grotesk',sans-serif;letter-spacing:-4px;margin:23px 0 18px;max-width:760px}h1 .gradient{background:linear-gradient(95deg,#b7a2ff 5%,#78e7e6 75%);background-clip:text;-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:16px;line-height:1.7;max-width:590px;margin:0}.hero-stats{display:flex;gap:28px;margin-top:32px;flex-wrap:wrap}.stat strong{font:700 21px 'Space Grotesk';display:block}.stat span{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+.hero-orb{position:absolute;right:6%;top:78px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(156,125,255,.26),rgba(65,210,221,.06) 55%,transparent 70%);filter:blur(3px);pointer-events:none}.hero-orb:after{content:'🎮';position:absolute;inset:0;display:grid;place-items:center;font-size:100px;filter:drop-shadow(0 15px 35px rgba(119,103,255,.3));transform:rotate(-12deg)}
+.toolbar{display:flex;gap:12px;align-items:center;margin:10px 0 22px;flex-wrap:wrap}.search-wrap{position:relative;flex:1;min-width:220px}.search-wrap span{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#8791a9;font-size:17px}.search{width:100%;height:49px;border:1px solid var(--line);background:rgba(18,23,37,.88);border-radius:14px;color:white;padding:0 16px 0 45px;outline:none;transition:.2s}.search:focus{border-color:rgba(155,123,255,.7);box-shadow:0 0 0 4px rgba(155,123,255,.1)}.sort{height:49px;border:1px solid var(--line);background:var(--panel);color:#c8cee0;border-radius:14px;padding:0 14px;outline:none}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}.filter{border:1px solid var(--line);background:rgba(20,25,40,.8);color:#aab2c8;padding:9px 14px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;transition:.2s}.filter:hover,.filter.active{background:linear-gradient(100deg,rgba(155,123,255,.2),rgba(92,225,230,.1));border-color:rgba(155,123,255,.55);color:#fff}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:36px 0 17px}.section-head h2{font:700 24px 'Space Grotesk';letter-spacing:-.8px;margin:0}.section-head p{color:var(--muted);font-size:12px;margin:5px 0 0}.count{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.game-card{background:linear-gradient(145deg,rgba(22,28,45,.98),rgba(14,18,30,.98));border:1px solid var(--line);border-radius:19px;overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s;position:relative}.game-card:hover{transform:translateY(-5px);border-color:rgba(155,123,255,.48);box-shadow:0 18px 45px rgba(0,0,0,.28),0 0 25px var(--glow)}.cover{height:142px;display:grid;place-items:center;position:relative;overflow:hidden}.cover:before,.cover:after{content:'';position:absolute;border-radius:50%;filter:blur(1px)}.cover:before{width:190px;height:190px;background:rgba(255,255,255,.1);top:-115px;right:-25px}.cover:after{width:130px;height:130px;background:rgba(255,255,255,.08);bottom:-100px;left:15px}.cover-emoji{font-size:59px;filter:drop-shadow(0 10px 15px rgba(0,0,0,.3));z-index:1;transition:transform .25s}.game-card:hover .cover-emoji{transform:scale(1.12) rotate(-5deg)}.cover-tag{position:absolute;top:13px;left:13px;background:rgba(5,8,15,.35);border:1px solid rgba(255,255,255,.18);padding:5px 9px;border-radius:999px;font-size:9px;letter-spacing:.8px;text-transform:uppercase;font-weight:800;z-index:2;backdrop-filter:blur(8px)}
+.card-body{padding:17px}.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.card-top h3{font:700 17px 'Space Grotesk';margin:0;letter-spacing:-.3px}.fav{border:0;background:transparent;color:#7f899f;font-size:21px;cursor:pointer;padding:0 2px;line-height:1}.fav.active{color:#ff7fa9}.game-desc{font-size:12px;line-height:1.6;color:var(--muted);min-height:39px;margin:9px 0 15px}.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px}.tag{font-size:10px;color:#b9c3d9;background:rgba(255,255,255,.055);padding:6px 9px;border-radius:7px}.play{font-size:11px;font-weight:800;padding:9px 13px;border-radius:9px;background:linear-gradient(100deg,#9b7bff,#65dce3);color:#0b0e18;transition:filter .2s}.play:hover{filter:brightness(1.13)}
+.empty{grid-column:1/-1;text-align:center;padding:55px 15px;color:var(--muted);border:1px dashed var(--line);border-radius:18px}.empty strong{display:block;color:white;font:700 20px 'Space Grotesk';margin-bottom:7px}
+.bottom-cta{margin:78px 0 35px;padding:40px;border-radius:25px;border:1px solid rgba(155,123,255,.2);background:radial-gradient(ellipse at 15% 20%,rgba(155,123,255,.2),transparent 55%),radial-gradient(ellipse at 90% 80%,rgba(92,225,230,.12),transparent 50%),#111625;display:flex;justify-content:space-between;align-items:center;gap:25px}.bottom-cta h2{font:700 28px 'Space Grotesk';letter-spacing:-1px;margin:0 0 8px}.bottom-cta p{color:var(--muted);font-size:13px;line-height:1.6;margin:0;max-width:520px}.cta-button{white-space:nowrap;background:white;color:#101321;padding:13px 18px;border-radius:11px;font-weight:800;font-size:12px}
+footer{border-top:1px solid var(--line);padding:25px 28px 35px;color:#78839b;font-size:11px}.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footer-brand{color:#d8dcf0;font:700 13px 'Space Grotesk'}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-orb{right:0;opacity:.55}.hero{padding-top:65px}}
+@media(max-width:580px){header{height:65px;padding:0 18px}.nav{gap:12px}.nav a:not(.nav-pill){display:none}main{padding:0 18px}.hero{padding:58px 0 38px}h1{letter-spacing:-2.7px}.hero-orb{width:140px;height:140px;top:45px;right:-25px;opacity:.3}.hero-orb:after{font-size:65px}.hero p{font-size:14px}.hero-stats{gap:18px}.grid{grid-template-columns:1fr}.cover{height:155px}.bottom-cta{padding:27px;display:block}.cta-button{display:inline-block;margin-top:20px}.section-head h2{font-size:21px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#"><span class="brand-mark">✦</span><span>GAME <span>CENTRAL</span></span></a>
+  <nav class="nav"><a href="#games">Explore games</a><a href="#about">About</a><a class="nav-pill" href="#games">Find a game ↗</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="eyebrow"><span class="pulse"></span> YOUR NEXT GAME STARTS HERE</div>
+    <h1>Less searching.<br><span class="gradient">More playing.</span></h1>
+    <p>A hand-picked hub for fun games you can jump into. Discover browser classics, clever puzzles, multiplayer chaos and more, all in one place.</p>
+    <div class="hero-stats"><div class="stat"><strong id="game-total">12+</strong><span>Games to explore</span></div><div class="stat"><strong>5</strong><span>Categories</span></div><div class="stat"><strong>Free</strong><span>To browse</span></div></div>
+  </section>
+  <section id="games">
+    <div class="section-head"><div><h2>Explore the games</h2><p>Pick your next obsession.</p></div><span class="count" id="result-count">12 games</span></div>
+    <div class="toolbar"><div class="search-wrap"><span>⌕</span><input class="search" id="search" type="search" placeholder="Search games..." autocomplete="off" aria-label="Search games"></div><select class="sort" id="sort" aria-label="Sort games"><option value="featured">Featured</option><option value="az">A to Z</option></select></div>
+    <div class="filters" id="filters">
+      <button class="filter active" data-category="All">All games</button><button class="filter" data-category="Puzzle">🧩 Puzzle</button><button class="filter" data-category="Arcade">🕹️ Arcade</button><button class="filter" data-category="Strategy">♟️ Strategy</button><button class="filter" data-category="Multiplayer">👥 Multiplayer</button><button class="filter" data-category="Creative">🎨 Creative</button><button class="filter" data-category="Favourites">♥ Favourites</button>
+    </div>
+    <div class="grid" id="game-grid" aria-live="polite"></div>
+  </section>
+  <section class="bottom-cta" id="about"><div><h2>Find your next favourite.</h2><p>Game Central brings fun discoveries together. Got a game we should add? Keep an eye out as the collection grows.</p></div><a class="cta-button" href="#games">Explore the collection ↗</a></section>
+</main>
+<footer><div class="footer-inner"><span class="footer-brand">✦ GAME CENTRAL</span><span>A little less scrolling. A lot more gaming.</span><span>Game responsibly. Take breaks.</span></div></footer>
+<script>
+const games=[
+{name:"2048",category:"Puzzle",emoji:"🔢",tone:"linear-gradient(135deg,#e9a45e,#bd6a45)",desc:"Slide numbered tiles and combine them to reach 2048.",url:"https://play2048.co/"},
+{name:"TETR.IO",category:"Arcade",emoji:"🟪",tone:"linear-gradient(135deg,#5546bd,#a34cc8)",desc:"A fast, competitive take on the classic falling-block puzzle.",url:"https://tetr.io/"},
+{name:"Chess",category:"Strategy",emoji:"♟️",tone:"linear-gradient(135deg,#426b78,#243d56)",desc:"Play chess online, solve puzzles, and challenge your skills.",url:"https://www.chess.com/play"},
+{name:"Lichess",category:"Strategy",emoji:"♞",tone:"linear-gradient(135deg,#6a9c73,#315d58)",desc:"A free place to play chess, practise, and improve.",url:"https://lichess.org/"},
+{name:"Little Alchemy 2",category:"Puzzle",emoji:"🧪",tone:"linear-gradient(135deg,#5b91d7,#7559bd)",desc:"Combine basic elements to discover a world of new creations.",url:"https://littlealchemy2.com/"},
+{name:"Slither.io",category:"Arcade",emoji:"🐍",tone:"linear-gradient(135deg,#42b88a,#236d80)",desc:"Grow your snake, collect glowing orbs, and climb the leaderboard.",url:"https://slither.io/"},
+{name:"Gartic Phone",category:"Multiplayer",emoji:"✏️",tone:"linear-gradient(135deg,#e47b9a,#9b5dc5)",desc:"A hilarious group drawing and guessing game.",url:"https://garticphone.com/"},
+{name:"GeoGuessr",category:"Puzzle",emoji:"🌍",tone:"linear-gradient(135deg,#54b7b5,#376a9a)",desc:"Explore a random place in the world and guess where you are.",url:"https://www.geoguessr.com/"},
+{name:"Wordle",category:"Puzzle",emoji:"🟩",tone:"linear-gradient(135deg,#8eaa63,#477d66)",desc:"Guess the five-letter word in six tries.",url:"https://www.nytimes.com/games/wordle/index.html"},
+{name:"Roblox",category:"Creative",emoji:"⬜",tone:"linear-gradient(135deg,#626c80,#303747)",desc:"Explore millions of community-made experiences.",url:"https://www.roblox.com/discover"},
+{name:"Scratch",category:"Creative",emoji:"🐱",tone:"linear-gradient(135deg,#f3a044,#e36e55)",desc:"Play projects made by the community, or create your own games.",url:"https://scratch.mit.edu/explore/projects/games/"},
+{name:"Cookie Clicker",category:"Arcade",emoji:"🍪",tone:"linear-gradient(135deg,#b77b4d,#70452f)",desc:"Start with one cookie and build a ridiculously big cookie empire.",url:"https://orteil.dashnet.org/cookieclicker/"}
+];
+const grid=document.getElementById('game-grid'),search=document.getElementById('search'),sort=document.getElementById('sort');
+let category='All',favourites=JSON.parse(localStorage.getItem('gc-favourites')||'[]');
+function render(){let q=search.value.trim().toLowerCase();let list=games.filter(g=>(category==='All'||(category==='Favourites'?favourites.includes(g.name):g.category===category))&&(g.name+' '+g.category+' '+g.desc).toLowerCase().includes(q));if(sort.value==='az')list.sort((a,b)=>a.name.localeCompare(b.name));document.getElementById('result-count').textContent=list.length+' game'+(list.length===1?'':'s');grid.innerHTML=list.length?list.map(g=>'<article class="game-card"><div class="cover" style="background:'+g.tone+'"><span class="cover-tag">'+g.category+'</span><span class="cover-emoji">'+g.emoji+'</span></div><div class="card-body"><div class="card-top"><h3>'+g.name+'</h3><button class="fav '+(favourites.includes(g.name)?'active':'')+'" data-fav="'+g.name+'" aria-label="Toggle favourite for '+g.name+'" aria-pressed="'+favourites.includes(g.name)+'">'+(favourites.includes(g.name)?'♥':'♡')+'</button></div><p class="game-desc">'+g.desc+'</p><div class="card-bottom"><span class="tag">Browser game</span><a class="play" href="'+g.url+'" target="_blank" rel="noopener noreferrer">Play game ↗</a></div></div></article>').join(''):'<div class="empty"><strong>No games found</strong>Try another search or category.</div>';}
+document.getElementById('filters').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;category=b.dataset.category;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));render();});
+grid.addEventListener('click',e=>{const b=e.target.closest('[data-fav]');if(!b)return;const name=b.dataset.fav;favourites=favourites.includes(name)?favourites.filter(x=>x!==name):[...favourites,name];localStorage.setItem('gc-favourites',JSON.stringify(favourites));render();});
+search.addEventListener('input',render);sort.addEventListener('change',render);render();
+</script>
+</body>
+</html>
