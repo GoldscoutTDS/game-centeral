@@ -42,10 +42,10 @@ footer{border-top:1px solid var(--line);padding:25px 28px 35px;color:#78839b;fon
     <div class="eyebrow"><span class="pulse"></span> YOUR NEXT GAME STARTS HERE</div>
     <h1>Less searching.<br><span class="gradient">More playing.</span></h1>
     <p>A hand-picked hub for fun games you can jump into. Discover browser classics, clever puzzles, multiplayer chaos and more, all in one place.</p>
-    <div class="hero-stats"><div class="stat"><strong id="game-total">11+</strong><span>Games to explore</span></div><div class="stat"><strong>5</strong><span>Categories</span></div><div class="stat"><strong>Free</strong><span>To browse</span></div></div>
+    <div class="hero-stats"><div class="stat"><strong id="game-total">6+</strong><span>Games to explore</span></div><div class="stat"><strong>5</strong><span>Categories</span></div><div class="stat"><strong>Free</strong><span>To browse</span></div></div>
   </section>
   <section id="games">
-    <div class="section-head"><div><h2>Explore the games</h2><p>Pick your next obsession.</p></div><span class="count" id="result-count">11 games</span></div>
+    <div class="section-head"><div><h2>Explore the games</h2><p>Pick your next obsession.</p></div><span class="count" id="result-count">6 games</span></div>
     <div class="toolbar"><div class="search-wrap"><span>⌕</span><input class="search" id="search" type="search" placeholder="Search games..." autocomplete="off" aria-label="Search games"></div><select class="sort" id="sort" aria-label="Sort games"><option value="featured">Featured</option><option value="az">A to Z</option></select></div>
     <div class="filters" id="filters">
       <button class="filter active" data-category="All">All games</button><button class="filter" data-category="Puzzle">🧩 Puzzle</button><button class="filter" data-category="Arcade">🕹️ Arcade</button><button class="filter" data-category="Strategy">♟️ Strategy</button><button class="filter" data-category="Multiplayer">👥 Multiplayer</button><button class="filter" data-category="Creative">🎨 Creative</button><button class="filter" data-category="Favourites">♥ Favourites</button>
@@ -58,17 +58,12 @@ footer{border-top:1px solid var(--line);padding:25px 28px 35px;color:#78839b;fon
 <div class="modal" id="game-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-panel"><div class="modal-head"><span class="modal-title" id="modal-title">Loading game...</span><div class="modal-tools"><a id="modal-external" href="#" target="_blank" rel="noopener noreferrer">Open in new tab ↗</a><button class="close-modal" id="close-modal" type="button">✕ Close</button></div></div><iframe class="game-frame" id="game-frame" title="Game player" allow="fullscreen; autoplay; gamepad" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="frame-note">If the game does not load, its website may block embedded play. Use “Open in new tab” instead.</div></div></div>
 <script>
 const games=[
-{name:"2048",category:"Puzzle",emoji:"🔢",tone:"linear-gradient(135deg,#e9a45e,#bd6a45)",desc:"Slide numbered tiles and combine them to reach 2048.",url:"https://play2048.co/"},
 {name:"TETR.IO",category:"Arcade",emoji:"🟪",tone:"linear-gradient(135deg,#5546bd,#a34cc8)",desc:"A fast, competitive take on the classic falling-block puzzle.",url:"https://tetr.io/",embed:false},
 {name:"Chess",category:"Strategy",emoji:"♟️",tone:"linear-gradient(135deg,#426b78,#243d56)",desc:"Play chess online, solve puzzles, and challenge your skills.",url:"https://www.chess.com/play",embed:false},
 {name:"Lichess",category:"Strategy",emoji:"♞",tone:"linear-gradient(135deg,#6a9c73,#315d58)",desc:"A free place to play chess, practise, and improve.",url:"https://lichess.org/",embed:false},
-{name:"Little Alchemy 2",category:"Puzzle",emoji:"🧪",tone:"linear-gradient(135deg,#5b91d7,#7559bd)",desc:"Combine basic elements to discover a world of new creations.",url:"https://littlealchemy2.com/"},
-{name:"Slither.io",category:"Arcade",emoji:"🐍",tone:"linear-gradient(135deg,#42b88a,#236d80)",desc:"Grow your snake, collect glowing orbs, and climb the leaderboard.",url:"https://slither.io/"},
 {name:"Gartic Phone",category:"Multiplayer",emoji:"✏️",tone:"linear-gradient(135deg,#e47b9a,#9b5dc5)",desc:"A hilarious group drawing and guessing game.",url:"https://garticphone.com/",embed:false},
 {name:"GeoGuessr",category:"Puzzle",emoji:"🌍",tone:"linear-gradient(135deg,#54b7b5,#376a9a)",desc:"Explore a random place in the world and guess where you are.",url:"https://www.geoguessr.com/",embed:false},
 {name:"Wordle",category:"Puzzle",emoji:"🟩",tone:"linear-gradient(135deg,#8eaa63,#477d66)",desc:"Guess the five-letter word in six tries.",url:"https://www.nytimes.com/games/wordle/index.html",embed:false},
-{name:"Scratch",category:"Creative",emoji:"🐱",tone:"linear-gradient(135deg,#f3a044,#e36e55)",desc:"Play projects made by the community, or create your own games.",url:"https://scratch.mit.edu/explore/projects/games/"},
-{name:"Cookie Clicker EU",category:"Arcade",emoji:"🍪",tone:"linear-gradient(135deg,#b77b4d,#70452f)",desc:"Start with one cookie and build a ridiculously big cookie empire.",url:"https://cookieclicker.eu/"}
 ];
 const grid=document.getElementById('game-grid'),search=document.getElementById('search'),sort=document.getElementById('sort');
 let category='All',favourites=JSON.parse(localStorage.getItem('gc-favourites')||'[]');
